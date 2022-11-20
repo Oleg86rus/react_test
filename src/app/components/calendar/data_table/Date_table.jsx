@@ -1,10 +1,12 @@
 import { days } from '../date_title/Date_title'
+import { style } from './css.js'
 
 const Date_table = () => {
+
 	return (
-		<div>
-			{days.map(el=> (
-				<div></div>
+		<div style={style.table}>
+			{days.map((el, i)=> (
+				<div key={i} style={style.frame}></div>
 			))}
 		</div>
 	)

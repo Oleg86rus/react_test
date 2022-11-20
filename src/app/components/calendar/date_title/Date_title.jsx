@@ -1,6 +1,5 @@
-import { days, gantt_data, weeks } from '../../../../util'
 import { style as css } from './css'
-const startDate = gantt_data.period.split('-')[0].split('.')
+// const startDate = gantt_data.period.split('-')[0].split('.')
 export const days = []
 const weeks = []
 const entryDays = () => {
@@ -21,13 +20,13 @@ const Date_title = () => {
 	return (
 		<div style={css.title_frame}>
 			<div style={css.title_table}>
-				{weeks.map(el => (
-					<div style={css.title_weeks}>{el}</div>
+				{weeks.map((el, i) => (
+					<div style={css.title_weeks} key={i}>{el}</div>
 				))}
 			</div>
 			<div style={css.title_table}>
-				{days.map(el => (
-					<div style={css.title_days}>{el}</div>
+				{days.map((el, i) => (
+					<div style={css.title_days} key={i}>{el}</div>
 				))}
 			</div>
 		</div>

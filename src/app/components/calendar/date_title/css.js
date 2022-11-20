@@ -16,7 +16,7 @@ export const style = {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		minWidth: '135.4px',
+		minWidth: '154px',
 		height: '24px',
 		borderWidth: '0px 1px 1px 0px',
 		fontWeight: '400',

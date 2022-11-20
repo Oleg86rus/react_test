@@ -1,5 +1,5 @@
 export const style = {
-	parent: {
+	title: {
 		width: '950px',
 		overflowX: 'scroll',
 	},
@@ -9,5 +9,6 @@ export const style = {
 		borderWidth: '1px 1px 1px 0px',
 		borderStyle: 'solid',
 		borderColor: 'rgba(38, 40, 66, 0.12)',
-	}
+	},
+
 }
