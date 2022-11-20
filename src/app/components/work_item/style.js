@@ -3,12 +3,11 @@ export 	const style = {
 		borderWidth: '1px 1px 1px 1px',
 		borderStyle: 'solid',
 		borderRadius: '10px 0px 0px 10px',
-		minWidth: '390px',
+		width: '390px',
 		height: '708x',
 		padding: 0,
 		margin: 0,
 		zIndex: 1000,
-		overflow: 'hidden'
 	},
 	title: {
 		display: 'flex',

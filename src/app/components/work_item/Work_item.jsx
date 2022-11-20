@@ -1,14 +1,15 @@
 import Work_item_frame from './work_item_frame/Work_item_frame'
-import { gantt_data } from '../../util'
-import { style } from './css'
+import { style } from './style'
+import { getGanttData } from '../../store/gantt'
+import { useSelector } from 'react-redux'
 
 const Work_item = () => {
 	const title = 'Work item'
-	const arr = new Array(gantt_data.chart)
-	const secondlvl = arr[0].sub
-	const thirdlvl = secondlvl[0].sub
-	const fourthlvl = thirdlvl[0].sub
-	const fifthlvl = fourthlvl[0].sub
+	const data = useSelector(getGanttData())
+	const second_lvl = data.chart.sub[0]
+	const third_lvl = second_lvl.sub[0]
+	const fourth_lvl = third_lvl.sub[0]
+	const fifth_lvl = fourth_lvl.sub
 	
 	return (
 		<div style={style.work_item}>
@@ -16,13 +17,25 @@ const Work_item = () => {
 				{title}</p>
 			</div>
 			<div style={style.frame}></div>
-			{arr && (
+			{data && (
 				<>
-				{arr.map((el, i) => <Work_item_frame key={el.id} img='1' length={secondlvl.length} props={el}/>)}
-				{secondlvl.map((el) => <Work_item_frame key={el.id} img='2' length={thirdlvl.length} props={el}/>)}
-				{thirdlvl.map((el) => <Work_item_frame key={el.id} img='3' length={fourthlvl.length} props={el}/>)}
-				{fourthlvl.map((el) => <Work_item_frame key={el.id} img='4' length={fifthlvl.length} props={el}/>)}
-				{fifthlvl.map((el) => <Work_item_frame key={el.id} img='5' length={fifthlvl[0].sub ? fifthlvl[0].sub.length : 0} props={el}/>)}
+					<Work_item_frame img='1' data='1' length='1' props={data.chart}>
+						<Work_item_frame img="2" data="2" length="1" props={second_lvl}>
+							<Work_item_frame img="3" data="3" length="1" props={third_lvl}>
+								<Work_item_frame img="4" data="4" length="1" props={fourth_lvl}>
+									{fifth_lvl.map((el) => <Work_item_frame
+										key={el.id}
+										data="5"
+									  img="5"
+										length={
+										el.sub
+											? el.sub.length
+											: 0} props={el}
+									/>)}
+								</Work_item_frame>
+							</Work_item_frame>
+						</Work_item_frame>
+					</Work_item_frame>
 				</>
 			)}
 		</div>

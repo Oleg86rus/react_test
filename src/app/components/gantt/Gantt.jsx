@@ -1,5 +1,5 @@
 import Date_title from '../calendar/date_title/Date_title'
-import { style } from './css'
+import { style } from './style'
 import Date_table from '../calendar/data_table/Date_table'
 
 const Gantt = () => {

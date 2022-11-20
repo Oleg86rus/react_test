@@ -1,52 +1,57 @@
 import PropTypes from 'prop-types'
 import arrow from '../../../images/work_item_frames/arrow.svg'
-import first_issue from "../../../images/work_item_frames/first_level.png"
-import second_issue from "../../../images/work_item_frames/second_level.png"
-import third_issue from "../../../images/work_item_frames/third_level.png"
-import fourth_issue from "../../../images/work_item_frames/fourth_level.png"
-import fifth_issue from "../../../images/work_item_frames/fifth_level.png"
-import { style } from './css'
+import { style } from './style'
+import { current_img } from '../../../utils/current_img'
+import tasks_margin from '../../../utils/tasks_margin'
+import { current_chart_color } from '../../../utils/current_chart_color'
+import { collapse_heading } from '../../../utils/collaps'
 
-export function frameMargin(i) {
-	switch (i) {
-		case '1':
-			return { marginLeft: '20px' };
-		case '2':
-			return { marginLeft: '40px' };
-		case '3':
-			return { marginLeft: '60px' };
-		case '4':
-			return { marginLeft: '80px' };
-		case '5':
-			return { marginLeft: '100px' };
+const Work_item_frame = ({ props, length, img, children, data }) => {
+	const date1 = new Date(props.period_start);
+	const date2 = new Date(props.period_end);
+	const chartStyle = {
+		height: '24px',
+		borderRadius: '4px',
+		...current_chart_color(img)
 	}
-}
-
-const Work_item_frame = ({ props, length, img }) => {
-	
-	const current_img = () => {
-		if (img) {
-			switch (img) {
-				case '1':
-					return first_issue;
-				case '2':
-					return second_issue;
-				case '3':
-					return third_issue;
-				case '4':
-					return fourth_issue;
-				case '5':
-					return fifth_issue;
-			}
-		}
+	const day_chart_start = () => {
+		const day = date1.getDate() - 1
+		return day * 20 + 389 + 'px'
 	}
+	const parent_chart = {
+		position: 'absolute',
+		width: '100%',
+		height: '40px',
+		left: 0,
+		marginLeft: day_chart_start(),
+		display: 'flex',
+		gap: '8px',
+		alignItems: 'center',
+		zIndex: 100000
+	}
+	let daysLag = () => props.period_start == props.period_end
+		? {
+		width: '20px',
+			...chartStyle
+	}
+		: {
+		width: 20 * Math.ceil(Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24)) + 20 + 'px',
+			...chartStyle
+	};
 
   return (
-		<div style={style.frame}>
-			<img src={arrow} alt="arrow" style={frameMargin(img)} />
-			<img src={current_img()} alt="issue_icon" style={style.issue}/>
+		<div data-type='hide'>
+		<div style={style.frame} data-type={data} onClick={(e) => collapse_heading(e)}>
+			<img src={arrow} alt="arrow" style={tasks_margin(img)} />
+			<img src={current_img(img)} alt="issue_icon" style={style.issue}/>
 			<div style={style.amount}>{length}</div>
 			<div style={style.title}>{props.title}</div>
+			<div style={parent_chart}>
+				<div className='chart' style={daysLag()}></div>
+				<p>{props.title}</p>
+			</div>
+		</div>
+			{children}
 		</div>
   )
 }
