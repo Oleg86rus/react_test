@@ -1,13 +1,14 @@
-import { frameMargin } from './Work_item_frame'
 
 export const style = {
 	frame: {
 		display: 'flex',
 		alignItems: 'center',
-		width: 'auto',
+		width: '390px',
 		height: '40px',
 		background: '#FFFFFF',
-		borderWidth: '0px 0px 1px 0px'
+		borderWidth: '0px 1px 1px 0px',
+		position: 'relative',
+		cursor: 'pointer'
 	},
 	amount: {
 		fontFamily: 'Roboto',
@@ -17,9 +18,6 @@ export const style = {
 		lineHeight: '16px',
 		color: '#8B8C9E',
 		marginLeft: '4px'
-	},
-	arrow: {
-		marginLeft: frameMargin()
 	},
 	issue: {
 		marginLeft: '4px'

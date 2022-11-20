@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import ganttService from '../service/gantt_data.service'
-import { gantt_data } from '../util'
+import { gantt_data } from '../utils/gantt_data'
 
 const ganttSlice = createSlice({
 	name: 'gantt',

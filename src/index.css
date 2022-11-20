@@ -4,7 +4,19 @@
 
 * {
   padding: 0;
-  /*border-color: rgba(38, 40, 66, 0.12);*/
+  font-family: 'Roboto';
+  box-sizing: border-box;
+  border-color: rgba(38, 40, 66, 0.12);
+  text-decoration: none;
+  outline: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
 }
 
 body {
@@ -19,8 +31,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.ReactCollapse--collapse {
-  transition: height 500ms;
 }

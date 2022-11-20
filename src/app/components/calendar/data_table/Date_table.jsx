@@ -1,5 +1,5 @@
 import { days } from '../date_title/Date_title'
-import { style } from './css.js'
+import { style } from './style.js'
 
 const Date_table = () => {
 

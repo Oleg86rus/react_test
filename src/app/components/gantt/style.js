@@ -1,7 +1,7 @@
 export const style = {
 	title: {
 		width: '950px',
-		overflowX: 'scroll',
+		overflowX: 'hidden',
 	},
 	frame: {
 		width: '1050px',
