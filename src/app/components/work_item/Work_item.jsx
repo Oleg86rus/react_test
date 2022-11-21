@@ -22,7 +22,7 @@ const Work_item = () => {
 					<Work_item_frame img='1' data='1' length='1' props={data.chart}>
 						<Work_item_frame img="2" data="2" length="1" props={second_lvl}>
 							<Work_item_frame img="3" data="3" length="1" props={third_lvl}>
-								<Work_item_frame img="4" data="4" length="1" props={fourth_lvl}>
+								<Work_item_frame img="4" data="4" length="2" props={fourth_lvl}>
 									{fifth_lvl.map((el) => <Work_item_frame
 										key={el.id}
 										data="5"
