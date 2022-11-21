@@ -12,7 +12,6 @@ export const collapse_heading = (e) => {
 	switch (e.target.dataset.type) {
 		case '1':
 			el = document.querySelectorAll('[data-type="2"]')
-			console.log(el)
 			change_opacity(el)
 			break
 		case '2':
